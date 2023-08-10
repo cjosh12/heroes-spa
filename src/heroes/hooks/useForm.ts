@@ -1,16 +1,14 @@
-import { useState } from "react"
+import { useState, ChangeEvent } from "react"
 
-interface TargetProps {
-    target: {
-        name: string;
-        value: string;
-    };
+interface FormState {
+    [key: string]: string;
 }
 
-export const useForm = (initialForm = {}) => {
+
+export const useForm = (initialForm:FormState = {}) => {
     const [formState, setFormState] = useState(initialForm);
 
-    const onInputChange = ({ target }: TargetProps) => {
+    const onInputChange = ({ target }: ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = target;
         setFormState({
             ...formState,
