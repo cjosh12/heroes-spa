@@ -1,26 +1,26 @@
 import { useState } from "react"
 
-interface TargetProps{
+interface TargetProps {
     target: {
         name: string;
         value: string;
     };
 }
 
-export const useForm = (initialForm = {})=>{
+export const useForm = (initialForm = {}) => {
     const [formState, setFormState] = useState(initialForm);
 
-    const onInputChange = ({target}: TargetProps) => {
-        const {name, value} = target;
+    const onInputChange = ({ target }: TargetProps) => {
+        const { name, value } = target;
         setFormState({
-        ...formState,
-        [name]: value
+            ...formState,
+            [name]: value
         });
     }
-    const onResetForm = ()=>{
+    const onResetForm = () => {
         setFormState(initialForm);
     }
-    return{
+    return {
         ...formState,
         formState,
         onInputChange,
